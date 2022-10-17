@@ -5,7 +5,7 @@ body {
     margin-right: 0px;
     display: grid;
     overflow-x: hidden;
-    padding-top: 60px;    
+    padding-top: 60px;
     --nav-height: 40px;
     --border-blck: 2px solid rgb(3, 3, 3);
     --box-sh1: 0 9px #999;
@@ -47,7 +47,7 @@ input[type=text] {
     align-items: center;
     justify-content: center;
 }
-
+ /* Navegacion */
 .primary-navigation {
     font-size: 20px;
     color: white;
@@ -59,6 +59,7 @@ input[type=text] {
     justify-content: space-between;
     background: hsl(0 0% 0% / 0.4);
 }
+ /* Si el navegador lo soporta */
 
 @supports (backdrop-filter: blur(1rem)) {
     .primary-navigation {
@@ -97,6 +98,7 @@ a:active {
     display: flex;
     margin: auto;
 }
+     /* main */
 
 .products {
     justify-items: center;
@@ -105,6 +107,7 @@ a:active {
     grid-template-columns: repeat(3, 1fr);
 }
 
+    /* producto */
 .card {
     border-radius: 8px;
     height: 100%;
@@ -159,10 +162,11 @@ a:active {
 .text-right {
     text-align: right;
 }
-.text-center{
+
+.text-center {
     text-align: center;
 }
-
+    /* tabla del carrito */
 table {
     border: 1px solid #ccc;
     border-collapse: collapse;
@@ -170,89 +174,78 @@ table {
     padding: 0;
     width: 100%;
     table-layout: fixed;
-  }
-  
-  table caption {
+}
+
+table caption {
     font-size: 1.5em;
     margin: .5em 0 .75em;
-  }
-  
-  table tr {
+}
+
+table tr {
     background-color: #f8f8f8;
     border: 1px solid #ddd;
     padding: .35em;
-  }
-  
-  table th,
-  table td {
+}
+
+table th,
+table td {
     padding: .625em;
     text-align: center;
-    
-}
-table td .action{
 
 }
-  
-  table th {
+
+table th {
     font-size: .85em;
     letter-spacing: .1em;
     text-transform: uppercase;
-  }
-  
-  @media screen and (max-width: 58em) {
+}
+
+@media screen and (max-width: 58em) {
     table {
-      border: 0;
+        border: 0;
     }
-  
+
     table caption {
-      font-size: 1.3em;
+        font-size: 1.3em;
     }
-    
+
     table thead {
-      border: none;
-      clip: rect(0 0 0 0);
-      height: 1px;
-      margin: -1px;
-      overflow: hidden;
-      padding: 0;
-      position: absolute;
-      width: 1px;
+        border: none;
+        clip: rect(0 0 0 0);
+        height: 1px;
+        margin: -1px;
+        overflow: hidden;
+        padding: 0;
+        position: absolute;
+        width: 1px;
     }
-    
+
     table tr {
-      border-bottom: 3px solid #ddd;
-      display: block;
-      margin-bottom: .625em;
+        border-bottom: 3px solid #ddd;
+        display: block;
+        margin-bottom: .625em;
     }
-    
+
     table td {
-      border-bottom: 1px solid #ddd;
-      display: block;
-      font-size: .8em;
-      text-align: right;
+        border-bottom: 1px solid #ddd;
+        display: block;
+        font-size: .8em;
+        text-align: right;
     }
-    
+
     table td::before {
-      /*
-      * aria-label has no advantage, it won't be read inside a table
-      content: attr(aria-label);
-      */
-      content: attr(data-label);
-      float: left;
-      font-weight: bold;
-      text-transform: uppercase;
+        content: attr(data-label);
+        float: left;
+        font-weight: bold;
+        text-transform: uppercase;
     }
-    
+
     table td:last-child {
-      border-bottom: 0;
+        border-bottom: 0;
     }
-  }
-  
-  
-  
+}
 
-
-
+    /* botones */
 .btn {
     background-repeat: no-repeat;
     padding: 12px 28px;
@@ -271,7 +264,6 @@ table td .action{
 
 .btn:hover {
     background-color: #881400;
-
     color: white;
 }
 
@@ -311,6 +303,7 @@ table td .action{
     border-radius: 4px;
     transition-duration: 0.4s;
 }
+
 .btn-restar {
     background-image: url(./restar.svg);
     background-repeat: no-repeat;
@@ -348,7 +341,8 @@ table td .action{
     box-shadow: var(--box-sh2);
     transform: translateY(4px);
 }
-[aria-expanded=true]{
+
+[aria-expanded=true] {
     display: none;
 }
 
@@ -380,9 +374,9 @@ table td .action{
 [aria-hidden="true"] {
     display: none;
 }
+    /* navegacion el cualquier resolucion */
+@media(min-width:90em) { /* 1440px */
 
-@media(min-width:90em) {
- 
     .primary-navigation {
         height: var(--nav-height);
         position: fixed;
@@ -396,12 +390,14 @@ table td .action{
     }
 
 }
-@media(min-width:58em)and (max-width:90em) {
+
+@media(min-width:58em)and (max-width:90em) { /* 928-1440px */
     .products {
         gap: 0.5rem;
         display: grid;
         grid-template-columns: repeat(2, 1fr);
     }
+
     .primary-navigation {
         height: var(--nav-height);
         position: fixed;
@@ -416,20 +412,19 @@ table td .action{
 
 }
 
-@media(max-width:58em) {
-   
+@media(max-width:58em) { /* -928px */
+
     .primary-navigation {
         position: fixed;
         inset: 0 0 0 30%;
         flex-direction: column;
-        background: hsl(0 0% 0% / 0.4);        
+        background: hsl(0 0% 0% / 0.4);
         backdrop-filter: blur(1rem);
         padding: min(30vh, 10rem) 2em;
         transform: translateX(100%);
     }
 
     .mobile-cart {
-
         display: block;
         position: fixed;
         justify-self: start;
@@ -446,13 +441,14 @@ table td .action{
     .mobile-cart:hover {
         cursor: pointer;
     }
+
     .products {
         gap: 2rem;
         display: grid;
         grid-template-columns: repeat(1, 1fr);
     }
-    .mobile-nav-toggle {
 
+    .mobile-nav-toggle {
         display: block;
         position: fixed;
         justify-self: start;
@@ -476,18 +472,14 @@ table td .action{
     }
 
     .modal {
-        margin-top: 20%;
+        margin-top: 10%;
     }
-   
-       
 
-.modal-content {
-    margin-left: 5%;
-    margin-right: 5%;
-    width: 80%;
-  }
-  
-    
+    .modal-content {
+        margin-left: 5%;
+        margin-right: 5%;
+        width: 80%;
+    }
 
     .menus {
         flex-direction: column;
@@ -495,49 +487,38 @@ table td .action{
 
     input[type=text] {
         font-size: 14px;
-
         color: white;
         width: 150px;
     }
-    
+
     .mobile-nav-toggle[aria-expanded="true"] {
         background-image: url("close.svg");
     }
 }
-
+ /* dialogo del carrito */
 .modal {
     display: none;
-    /* Hidden by default */
     position: fixed;
-    /* Stay in place */
     z-index: 1;
-    /* Sit on top */
     left: 0;
     top: 0;
     width: 100%;
-    /* Full width */
     height: 100%;
-    /* Full height */
     overflow: auto;
-    /* Enable scroll if needed */
 
 }
 
-/* Modal Content/Box */
 .modal-content {
     box-shadow: var(--box-sh2);
     border-radius: 8px;
     background-color: #fefefe;
     padding-top: 60%;
     margin: 15% auto;
-    /* 15% from the top and centered */
     padding: 20px;
     border: 1px solid #888;
     width: 60%;
-    /* Could be more or less, depending on screen size */
 }
 
-/* The Close Button */
 .close {
     color: #aaa;
     float: right;

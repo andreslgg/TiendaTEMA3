@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -11,15 +10,14 @@
     <script src="./components/nav.js" defer></script>
     <script src="./components/product.js"></script>
     <script src="./components/cart.js"></script>
-
 </head>
-
 <body>
-
-    <button class="mobile-nav-toggle" aria-expanded="false" aria-controlls="primary-navigation" aria-expanded="false"></button>
+    <!-- Botones de navegacion en celular -->
+    <button class="mobile-nav-toggle" aria-expanded="false" aria-controlls="primary-navigation"
+        aria-expanded="false"></button>
     <button class="mobile-cart" aria-hidden="true" onclick="verCarrito()"></button>
 
-
+    <!-- Navegacion en escritorio-->
     <nav class="nav">
         <ul id="primary-navigation" data-visible="false" class="primary-navigation flex">
             <li>
@@ -53,23 +51,18 @@
                             <i class="material-icons">shopping_cart</i>
                         </span>
                     </a>
-
                 </li>
             </div>
         </ul>
     </nav>
-
+    <!-- Contenedor de productos -->
     <div class="container">
         <!-- Elementos generados a partir del JSON -->
         <main id="items" class="products"></main>
         <!-- Carrito -->
-
     </div>
-
-
     <!-- dialogo carrito -->
     <div id="dialog" class="modal">
-
         <!-- Modal content -->
         <div class="modal-content">
             <span class="close">&times;</span>
@@ -85,9 +78,6 @@
                 </div>
             </aside>
         </div>
-
     </div>
-
 </body>
-
 </html>
