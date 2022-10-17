@@ -1,0 +1,553 @@
+body {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    line-height: 1.5;
+    min-height: 100vh;
+    margin-right: 0px;
+    display: grid;
+    overflow-x: hidden;
+    padding-top: 60px;    
+    --nav-height: 40px;
+    --border-blck: 2px solid rgb(3, 3, 3);
+    --box-sh1: 0 9px #999;
+    --box-sh2: 0 5px #666;
+}
+
+input[type=text] {
+    background-image: url('buscar1.svg');
+    background-position: 0px 0px;
+    background-repeat: no-repeat;
+    padding-left: 30px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    background-color: transparent;
+    border: none;
+    height: auto;
+    color: white;
+    font-size: 14px;
+}
+
+.input:focus {
+    outline: none;
+}
+
+.blackbg {
+    background-color: black;
+}
+
+.flex {
+    display: flex;
+    gap: var(--gap, 2rem);
+}
+
+.logo {
+    margin: 2rem;
+}
+
+.primary-header {
+    align-items: center;
+    justify-content: center;
+}
+
+.primary-navigation {
+    font-size: 20px;
+    color: white;
+    z-index: 2;
+    list-style: none;
+    padding: 1em;
+    margin: 0;
+    align-items: center;
+    justify-content: space-between;
+    background: hsl(0 0% 0% / 0.4);
+}
+
+@supports (backdrop-filter: blur(1rem)) {
+    .primary-navigation {
+        background: hsl(0 0% 0% / 0.4);
+        backdrop-filter: blur(1rem);
+    }
+}
+
+.primary-navigation a,
+a:hover,
+a:visited,
+a:active {
+    text-decoration: none;
+    color: inherit;
+}
+
+.primary-navigation a>[aria-hidden="true"] {
+    font-weight: 700;
+    margin-inline-end: 0.75em;
+    text-decoration: none;
+}
+
+.cart {
+    background-image: url("./cart.svg");
+}
+
+.main {
+    justify-items: center;
+    margin: auto;
+}
+
+.container {
+    justify-content: center;
+    width: 80%;
+    align-items: center;
+    display: flex;
+    margin: auto;
+}
+
+.products {
+    justify-items: center;
+    gap: 2rem;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+}
+
+.card {
+    border-radius: 8px;
+    height: 100%;
+    align-items: center;
+    border: var(--border-blck);
+    box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+    max-width: 450px;
+
+}
+
+.card-body {
+    height: 100%;
+}
+
+.img-card {
+    width: 450px;
+    height: 600px;
+    display: inline-block;
+    justify-content: center;
+
+}
+
+.img-card-s {
+    width: 30px;
+    height: 40px;
+
+}
+
+.card-title {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    text-align: center;
+    color: #292929;
+    font-size: 44px;
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+.card-text {
+    text-align: center;
+    color: #857100;
+    font-size: 24px;
+    margin-top: auto;
+}
+
+.row {
+    justify-content: right;
+    width: 80%;
+    margin: auto;
+    gap: .2em;
+}
+
+.text-right {
+    text-align: right;
+}
+.text-center{
+    text-align: center;
+}
+
+table {
+    border: 1px solid #ccc;
+    border-collapse: collapse;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    table-layout: fixed;
+  }
+  
+  table caption {
+    font-size: 1.5em;
+    margin: .5em 0 .75em;
+  }
+  
+  table tr {
+    background-color: #f8f8f8;
+    border: 1px solid #ddd;
+    padding: .35em;
+  }
+  
+  table th,
+  table td {
+    padding: .625em;
+    text-align: center;
+    
+}
+table td .action{
+
+}
+  
+  table th {
+    font-size: .85em;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+  }
+  
+  @media screen and (max-width: 58em) {
+    table {
+      border: 0;
+    }
+  
+    table caption {
+      font-size: 1.3em;
+    }
+    
+    table thead {
+      border: none;
+      clip: rect(0 0 0 0);
+      height: 1px;
+      margin: -1px;
+      overflow: hidden;
+      padding: 0;
+      position: absolute;
+      width: 1px;
+    }
+    
+    table tr {
+      border-bottom: 3px solid #ddd;
+      display: block;
+      margin-bottom: .625em;
+    }
+    
+    table td {
+      border-bottom: 1px solid #ddd;
+      display: block;
+      font-size: .8em;
+      text-align: right;
+    }
+    
+    table td::before {
+      /*
+      * aria-label has no advantage, it won't be read inside a table
+      content: attr(aria-label);
+      */
+      content: attr(data-label);
+      float: left;
+      font-weight: bold;
+      text-transform: uppercase;
+    }
+    
+    table td:last-child {
+      border-bottom: 0;
+    }
+  }
+  
+  
+  
+
+
+
+.btn {
+    background-repeat: no-repeat;
+    padding: 12px 28px;
+    border: none;
+    font-size: 16px;
+    background-color: white;
+    color: black;
+    border: 2px solid #881400;
+    border-radius: 4px;
+    box-shadow: var(--box-sh1)
+}
+
+.btn {
+    transition-duration: 0.4s;
+}
+
+.btn:hover {
+    background-color: #881400;
+
+    color: white;
+}
+
+.btn:active {
+    background-color: #4b0b00;
+    border: #4b0b00;
+    box-shadow: var(--box-sh2);
+    transform: translateY(4px);
+}
+
+.btn-borrar {
+    background-image: url(./delete.svg);
+    background-repeat: no-repeat;
+    padding: 12px 12px;
+    border: none;
+    background-color: white;
+    color: black;
+    border: 2px solid #000000;
+    border-radius: 4px;
+    transition-duration: 0.4s;
+}
+
+.btn-borrar:hover {
+    background-color: #881400;
+}
+
+.btn-agregar {
+    background-image: url(./agregar.svg);
+    background-repeat: no-repeat;
+    background-position-x: center;
+    background-position-y: center;
+    padding: 12px 12px;
+    border: none;
+    background-color: white;
+    color: black;
+    border: 2px solid #000000;
+    border-radius: 4px;
+    transition-duration: 0.4s;
+}
+.btn-restar {
+    background-image: url(./restar.svg);
+    background-repeat: no-repeat;
+    background-position-x: center;
+    background-position-y: center;
+    padding: 12px 12px;
+    border: none;
+    background-color: white;
+    color: black;
+    border: 2px solid #000000;
+    border-radius: 4px;
+    transition-duration: 0.4s;
+}
+
+.btn-pagar {
+    color: rgb(0, 0, 0);
+    padding: 12px 28px;
+    border: none;
+    font-size: 16px;
+    background-color: #ffffff;
+    border: 2px solid #004aaa;
+    border-radius: 4px;
+    transition-duration: 0.4s;
+    box-shadow: var(--box-sh1)
+}
+
+.btn-pagar:hover {
+    color: #ffffff;
+    background-color: #004aaa;
+}
+
+.btn-pagar:active {
+    background-color: #001f47;
+    border: #8b8c8d;
+    box-shadow: var(--box-sh2);
+    transform: translateY(4px);
+}
+[aria-expanded=true]{
+    display: none;
+}
+
+.btn-add {
+    background-image: url(./addCart.svg);
+    background-color: #fefefe;
+    background-repeat: no-repeat;
+    background-position: center;
+    margin-left: 43%;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    bottom: 10%;
+    border: var(--border-blck);
+    box-shadow: var(--box-sh1)
+}
+
+.btn-add:hover {
+    background-color: #dfdfdf;
+
+}
+
+.btn-add:active {
+    background-color: #666e6c;
+    box-shadow: var(--box-sh2);
+    transform: translateY(4px);
+}
+
+[aria-hidden="true"] {
+    display: none;
+}
+
+@media(min-width:90em) {
+ 
+    .primary-navigation {
+        height: var(--nav-height);
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 98%;
+    }
+
+    .nav--hidden {
+        transform: translateY(calc(-3 * var(--nav-height)));
+    }
+
+}
+@media(min-width:58em)and (max-width:90em) {
+    .products {
+        gap: 0.5rem;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .primary-navigation {
+        height: var(--nav-height);
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 98%;
+    }
+
+    .nav--hidden {
+        transform: translateY(calc(-3 * var(--nav-height)));
+    }
+
+}
+
+@media(max-width:58em) {
+   
+    .primary-navigation {
+        position: fixed;
+        inset: 0 0 0 30%;
+        flex-direction: column;
+        background: hsl(0 0% 0% / 0.4);        
+        backdrop-filter: blur(1rem);
+        padding: min(30vh, 10rem) 2em;
+        transform: translateX(100%);
+    }
+
+    .mobile-cart {
+
+        display: block;
+        position: fixed;
+        justify-self: start;
+        z-index: 1000;
+        background-color: transparent;
+        background-image: url("cart.svg");
+        background-repeat: no-repeat;
+        border: 0;
+        top: 1rem;
+        left: 1rem;
+        padding: min(20vh, 2rem) 2em;
+    }
+
+    .mobile-cart:hover {
+        cursor: pointer;
+    }
+    .products {
+        gap: 2rem;
+        display: grid;
+        grid-template-columns: repeat(1, 1fr);
+    }
+    .mobile-nav-toggle {
+
+        display: block;
+        position: fixed;
+        justify-self: start;
+        z-index: 1000;
+        background-color: transparent;
+        background-image: url("menu.svg");
+        background-repeat: no-repeat;
+        border: 0;
+        width: 3rem;
+        aspect-ratio: 1;
+        top: 1rem;
+        right: 2rem;
+    }
+
+    .mobile-nav-toggle:hover {
+        cursor: pointer;
+    }
+
+    .primary-navigation[data-visible="true"] {
+        transform: translateX(0%)
+    }
+
+    .modal {
+        margin-top: 20%;
+    }
+   
+       
+
+.modal-content {
+    margin-left: 5%;
+    margin-right: 5%;
+    width: 80%;
+  }
+  
+    
+
+    .menus {
+        flex-direction: column;
+    }
+
+    input[type=text] {
+        font-size: 14px;
+
+        color: white;
+        width: 150px;
+    }
+    
+    .mobile-nav-toggle[aria-expanded="true"] {
+        background-image: url("close.svg");
+    }
+}
+
+.modal {
+    display: none;
+    /* Hidden by default */
+    position: fixed;
+    /* Stay in place */
+    z-index: 1;
+    /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%;
+    /* Full width */
+    height: 100%;
+    /* Full height */
+    overflow: auto;
+    /* Enable scroll if needed */
+
+}
+
+/* Modal Content/Box */
+.modal-content {
+    box-shadow: var(--box-sh2);
+    border-radius: 8px;
+    background-color: #fefefe;
+    padding-top: 60%;
+    margin: 15% auto;
+    /* 15% from the top and centered */
+    padding: 20px;
+    border: 1px solid #888;
+    width: 60%;
+    /* Could be more or less, depending on screen size */
+}
+
+/* The Close Button */
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
