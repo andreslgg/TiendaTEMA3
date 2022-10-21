@@ -1,5 +1,5 @@
 body {
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  font-family: "SF Pro Text","SF Pro Icons","Helvetica Neue","Helvetica","Arial",sans-serif;
     background-color: #f9f9f9;
     min-height: 100vh;
     margin: 0;
@@ -14,21 +14,27 @@ input[type=text] {
     background-image: url('buscar.svg');
     background-position: 0px 0px;
     background-repeat: no-repeat;
-    background-position: 0%;
-    padding-left: 30px;
-    padding-top: 10px;
-    padding-bottom: 10px;
+    background-position: 4%;
+    padding-left: 35px;
+    padding-top: 15px;
+    padding-bottom: 15px;
     background-color: transparent;
-    border: none;
+    border-radius: 24px;
     color: rgb(0, 0, 0);
     font-size: 14px;
+    width: 150px;
+    border: black solid 1px;    
+
+
 }
 
+input[type=text]:hover {
+    }
 
 
 .flex {
     display: flex;
-    gap: var(--gap, 2rem);
+    gap: var(--gap, 3rem);
 }
 
 /* Navegacion */
@@ -68,28 +74,31 @@ a:active {
     background-image: url("./cart.svg");
 }
 
-.container {
+.div-productos {
     justify-content: center;
     width: 80%;
     align-items: center;
     display: flex;
     margin: auto;
 }
+.div-ver-producto{
+    justify-content: center;
+    width: 80%;
+    display: flex;
+    margin: auto;
+}
 
 /* main */
 
-.products {
+.productos {
     justify-items: center;
     gap:calc(10vw - 120px);    
     display: grid;
     grid-template-columns: repeat(3, 1fr);
 }
 
-
+.hide{display:none;}
 /* importante para esconder los productos */
-[hidden] {
-    display: none;
-}
 
 /* producto */
 .card {
@@ -137,25 +146,6 @@ a:active {
     justify-content: center;
     background-attachment: fixed;
 }
-/* .img-card-u:hover{
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 300px;
-    height: 100%;
-    background: #000;
-    box-shadow:20px 0 100px rgba(0, 0, 0, 0.2),
-                20px 0 100px rgba(0, 0, 0, 0.2);
-}
-@keyframes animate {
-    0%, 100%{
-        left:0px;
-    }
-    50%{
-        left:calc(100% - 300px)
-    }
-} */
 
 
 .img-card-s {
@@ -165,7 +155,6 @@ a:active {
 }
 
 .card-title {
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     text-align: center;
     color: #292929;
     font-size: 44px;
@@ -188,7 +177,6 @@ a:active {
 }
 
 .descrip {
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     text-align: center;
     color: #292929;
     font-size: 16px;
@@ -471,7 +459,7 @@ table th {
 @media(min-width:58em)and (max-width:90em) {
 
     /* 928-1440px */
-    .products {
+    .productos {
         gap:calc(10vw - 80px);
         display: grid;
         grid-template-columns: repeat(2, 1fr);
@@ -502,6 +490,8 @@ table th {
         backdrop-filter: blur(1rem);
         padding: min(30vh, 10rem) 2em;
         transform: translateX(100%);
+        justify-content:start;
+
     }
 
     .mobile-cart {
@@ -522,9 +512,10 @@ table th {
         cursor: pointer;
     }
 
-    .products {
+    .productos {
         display: grid;
         grid-template-columns: repeat(1, 1fr);
+        gap:calc(10vw - 20px);    
     }
 
     .mobile-nav-toggle {
@@ -562,13 +553,32 @@ table th {
 
     .menus {
         flex-direction: column;
+        
     }
 
-    input[type=text] {
-        font-size: 14px;
-        color: rgb(0, 0, 0);
-        width: 150px;
-    }
+   
+
+    #myUL {
+        /* Remove default list styling */
+        list-style-type: none;
+        padding: 0;
+        margin: 0;
+      }
+      
+      #myUL li a {
+        border: 1px solid #ddd; /* Add a border to all links */
+        margin-top: -1px; /* Prevent double borders */
+        background-color: #f6f6f6; /* Grey background color */
+        padding: 12px; /* Add some padding */
+        text-decoration: none; /* Remove default text underline */
+        font-size: 18px; /* Increase the font-size */
+        color: black; /* Add a black text color */
+        display: block; /* Make it into a block element to fill the whole list */
+      }
+      
+      #myUL li a:hover:not(.header) {
+        background-color: #eee; /* Add a hover effect to all links, except for headers */
+      }
 
     .mobile-nav-toggle[aria-expanded="true"] {
         background-image: url("close.svg");
@@ -600,15 +610,23 @@ table th {
 }
 
 .close {
+    margin-left: 3%;
+    padding-left: 9px;
+    padding-right: 9px;
+    background-color: transparent;
     color: #aaa;
     float: right;
     font-size: 28px;
     font-weight: bold;
+    border: 2px solid #aaa;
+    border-radius: 50%;
 }
 
 .close:hover,
 .close:focus {
-    color: black;
+    color: rgb(255, 255, 255);
+    background-color: #860606;
+    border-color: #800101;
     text-decoration: none;
     cursor: pointer;
 }

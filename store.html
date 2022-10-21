@@ -5,7 +5,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="author" content="co-authored by Andres Gonzalez, Samuel Amaya, Javier Cardenas, Jose Alvarado, Cristian Balderas">
+    <meta name="author"
+        content="co-authored by Andres Gonzalez, Samuel Amaya, Javier Cardenas, Jose Alvarado, Cristian Balderas">
     <title>TECHNOLAND</title>
     <link rel="stylesheet" href="./assets/styles.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
@@ -14,6 +15,8 @@
     <script src="./components/product.js"></script>
     <script src="./components/cart.js"></script>
     <script src="./components/productList.js"></script>
+    <script src="./components/searchBar.js"></script>
+    <script src="https://cdn.lordicon.com/qjzruarw.js"></script>
 </head>
 
 <body>
@@ -31,7 +34,7 @@
             </li>
             <li id="active">
                 <form action="">
-                    <input type="text" search="true" name="search" id="srch" placeholder="Buscar..." aria-hidden="false">
+                    <input type="text" search="true" name="search" id="srch" placeholder="Buscar..." onkeyup="buscarProducto()" onkeydown="return (event.keyCode!=13);" data>
                 </form>
             </li>
             <div class="menus flex">
@@ -46,22 +49,23 @@
                 </li>
                 <li id="active">
                     <a href="#" onclick="verCarrito()">
-                        <span aria-hidden="false">
-                            <i class="material-icons">shopping_cart</i>
-                        </span>
+                        <lord-icon src="https://cdn.lordicon.com/udbbfuld.json" trigger="hover" colors="primary:#242424" style="width:60px;height:60px;margin-top:-80px;padding-top: 40px;"></lord-icon>
                     </a>
                 </li>
             </div>
         </ul>
     </nav>
     <!-- Contenedor de productos -->
-    <div class="container" id="container" var>
+    <div class="div-productos" id="div-productos" var>
         <!-- Elementos generados a partir del JSON -->
-        <main id="items" class="products" ></main>
-        <main id="item" class="products1" hidden>No hay productos para mostrar</main>
+        <main id="productos" class="productos"></main>
+    </div>
+    <div class="div-ver-producto" id="div-ver-producto" hide>
+        <main id="ver-producto" class="ver-producto"></main>
+        
         <!-- Carrito -->
     </div>
-    <!-- dialogo carrito -->
+    <!-- Dialogo carrito -->
     <div id="dialog" class="modal">
         <!-- Modal content -->
         <div class="modal-content">
@@ -75,6 +79,7 @@
                 <div class="row">
                     <button id="boton-vaciar" class="btn">Vaciar</button>
                     <button class="btn-pagar">Pagar</button>
+
                 </div>
             </aside>
         </div>

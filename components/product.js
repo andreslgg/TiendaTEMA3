@@ -1,20 +1,21 @@
+
+
 document.addEventListener('DOMContentLoaded', () => {
     // Variables
-    const items = document.querySelector("#items");
-    const item = document.querySelector("#item");
+    const productos = document.getElementById('div-productos')
+    const verProductos = document.getElementById('div-ver-producto');
 
 
-    carrito = (localStorage.getItem('carrito') == null) ? [] : JSON.parse(localStorage.carrito)
+    let carrito = (localStorage.getItem('carrito') == null) ? [] : JSON.parse(localStorage.carrito)
 
-    console.log(carrito)
     const divisa = '$';
-    const DOMitems = document.querySelector('#items');
+    const DOMitems = document.querySelector('#productos');
     const DOMcarrito = document.querySelector('#carrito');
     const DOMtotal = document.querySelector('#total');
     const DOMbotonVaciar = document.querySelector('#boton-vaciar');
 
     function renderizarProductos() {
-        productos.forEach((info) => {
+        listaProductos.forEach((info) => {
             // Estructura
             const nodo = document.createElement('div');
             nodo.classList.add('card');
@@ -22,15 +23,14 @@ document.addEventListener('DOMContentLoaded', () => {
             const nodoCardBody = document.createElement('div');
             nodoCardBody.classList.add('card-body');
             // Titulo
-            const nodoTitle = document.createElement('h5');
-            nodoTitle.classList.add('card-title');
-            nodoTitle.textContent = info.nombre;
+            const nodoTitulo = document.createElement('h5');
+            nodoTitulo.classList.add('card-title');
+            nodoTitulo.textContent = info.nombre;
             // Imagen
             const nodoDivImagen = document.createElement('div');
             nodoDivImagen.classList.add('div-img-card-u');
-            
+
             const nodoImagen = document.createElement('img');
-            nodoImagen.setAttribute('route', `/productos`)
             nodoImagen.classList.add('img-card');
             nodoImagen.setAttribute('marcador', info.id);
             nodoImagen.setAttribute('src', info.imagen);
@@ -48,7 +48,7 @@ document.addEventListener('DOMContentLoaded', () => {
             // Insertamos
             nodoDivImagen.appendChild(nodoImagen)
             nodoCardBody.appendChild(nodoDivImagen);
-            nodoCardBody.appendChild(nodoTitle);
+            nodoCardBody.appendChild(nodoTitulo);
             nodoCardBody.appendChild(nodoPrecio);
             nodoCardBody.appendChild(nodoBoton);
             nodo.appendChild(nodoCardBody);
@@ -67,8 +67,8 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function abrirProducto(evento) {
-        items.hidden = true;
-        item.hidden = false;
+        productos.classList.add('hide')
+        verProductos.classList.remove('hide')
 
         localStorage.setItem('producto', evento.target.getAttribute('marcador'))
 
@@ -77,7 +77,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (i == null) {
         } else {
             const divisa = '$';
-            const DOMitem = document.querySelector('#item')
+            const DOMitem = document.querySelector('#ver-producto')
             console.log(DOMitem)
             DOMitem.innerHTML = ''
 
@@ -89,26 +89,29 @@ document.addEventListener('DOMContentLoaded', () => {
             const nodoCardBody = document.createElement('div');
             nodoCardBody.classList.add('card-body-u');
             // Titulo
-            const nodoTitle = document.createElement('h4');
-            nodoTitle.classList.add('card-title');
-            nodoTitle.textContent = productos[i].nombre;
+            const nodoTitulo = document.createElement('h4');
+            nodoTitulo.classList.add('card-title');
+            nodoTitulo.textContent = listaProductos[i].nombre;
             // Imagen
 
             const nodoImagen = document.createElement('img');
             nodoImagen.classList.add('img-card-u');
-            nodoImagen.setAttribute('src', productos[i].imagen);
+            nodoImagen.setAttribute('src', listaProductos[i].imagen);
             // Precio
             const nodoPrecio = document.createElement('p');
             nodoPrecio.classList.add('card-text');
-            nodoPrecio.textContent = `${divisa}${productos[i].precio}`;
+            nodoPrecio.textContent = `${divisa}${listaProductos[i].precio}`;
             // Boton 
             const nodoDescrip = document.createElement('p');
             nodoDescrip.classList.add('descrip');
-            nodoDescrip.textContent = `${productos[i].descripcion}`
+            nodoDescrip.textContent = `${listaProductos[i].descripcion}`
 
             const nodoBoton = document.createElement('button');
             nodoBoton.classList.add('btn-add');
-            nodoBoton.setAttribute('marcador', productos[i].id);
+            nodoBoton.setAttribute('marcador', listaProductos[i].id);
+            nodoBoton.addEventListener('click', agregarItemCarrito);
+
+
 
             const nodoRegresar = document.createElement('button')
             nodoRegresar.classList.add('btn-back');
@@ -117,7 +120,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             // Insertamos
             nodo.appendChild(nodoImagen);
-            nodoCardBody.appendChild(nodoTitle);
+            nodoCardBody.appendChild(nodoTitulo);
             nodoCardBody.appendChild(nodoDescrip);
             nodoCardBody.appendChild(nodoPrecio);
             nodoCardBody.appendChild(nodoBoton);
@@ -129,9 +132,10 @@ document.addEventListener('DOMContentLoaded', () => {
             const navToggle = document.querySelector(".mobile-nav-toggle");
             navToggle.setAttribute("aria-expanded", false)
         }
+
         function regresarIndex() {
-            items.hidden = false;
-            item.hidden = true;
+            productos.classList.remove('hide')
+            verProductos.classList.add('hide')
         }
     }
 
@@ -167,7 +171,7 @@ document.addEventListener('DOMContentLoaded', () => {
         nodoColumna3.textContent = `Precio`
         const nodoColumna4 = document.createElement('th');
         nodoColumna4.setAttribute('scope', 'col')
-        nodoColumna4.textContent = `Nombre`
+        nodoColumna4.textContent = `Producto`
         const nodoColumna5 = document.createElement('th');
         nodoColumna5.setAttribute('scope', 'col')
         nodoColumna5.textContent = `Accion`
@@ -189,7 +193,7 @@ document.addEventListener('DOMContentLoaded', () => {
         // Generamos los Nodos a partir de carrito
         carritoSinDuplicados.forEach((item) => {
             // Obtenemos el item que necesitamos de la variable base de datos
-            const miItem = productos.filter((itemProductos) => {
+            const miItem = listaProductos.filter((itemProductos) => {
                 // ¿Coincide las id? Solo puede existir un caso
                 return itemProductos.id === parseInt(item);
             });
@@ -223,7 +227,7 @@ document.addEventListener('DOMContentLoaded', () => {
             nodoBotonR.addEventListener('click', restarItemCarrito);
 
             //Nodos de las filas
-            const nodoFilaX = document.createElement('tr');
+            const nodoFilas = document.createElement('tr');
             const nodoImagen = document.createElement('td');
             nodoImagen.setAttribute('scope', 'row');
             nodoImagen.setAttribute('data-label', 'imagen');
@@ -248,16 +252,16 @@ document.addEventListener('DOMContentLoaded', () => {
             nodoBotones.appendChild(nodoBotonR);
             nodoBotones.appendChild(nodoBotonB);
 
-            nodoFilaX.appendChild(nodoImagen);
-            nodoFilaX.appendChild(nodoCantidad);
-            nodoFilaX.appendChild(nodoPrecio);
-            nodoFilaX.appendChild(nodoNombre);
-            nodoFilaX.appendChild(nodoBotones);
+            nodoFilas.appendChild(nodoImagen);
+            nodoFilas.appendChild(nodoCantidad);
+            nodoFilas.appendChild(nodoPrecio);
+            nodoFilas.appendChild(nodoNombre);
+            nodoFilas.appendChild(nodoBotones);
 
 
 
             // Mezclamos nodos
-            nodoTbody.appendChild(nodoFilaX);
+            nodoTbody.appendChild(nodoFilas);
             DOMcarrito.appendChild(nodoTabla);
         });
         // Renderizamos el precio total en el HTML
@@ -303,7 +307,7 @@ document.addEventListener('DOMContentLoaded', () => {
         // Recorremos el array del carrito 
         return carrito.reduce((total, item) => {
             // De cada elemento obtenemos su precio
-            const miItem = productos.filter((itemProductos) => {
+            const miItem = listaProductos.filter((itemProductos) => {
                 return itemProductos.id === parseInt(item);
             });
             // Los sumamos al total

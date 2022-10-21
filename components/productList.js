@@ -1,4 +1,4 @@
-productos = [
+listaProductos = [
     {
         id: 1,
         nombre: 'Laptop de trabajo',

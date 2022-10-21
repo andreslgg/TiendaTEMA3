@@ -11,6 +11,7 @@
     <link rel="icon" type="image/x-icon" href="./assets/iconF.png">
     <link rel="stylesheet" href="./login/styles.css">
     <script src="./login/login.js"></script>
+
 </head>
 
 <body>
@@ -23,14 +24,14 @@
             <img class="img-login" src="./assets/iconS.png">
             <input type="text" placeholder="Usuario" name="uname" required>
 
-            <input type="password" placeholder="*********" name="psw" required>
+            <input type="password" id="psw" placeholder="*********" name="psw" required>
             <label class="incorrect" id="incorrect" hidden>Usuario o contraseña incorrectos</label>
             <label class="lbl">Recordar contraseña
                 <input type="checkbox" checked="checked">
                 <span class="checkmark"></span>
               </label>
 
-            <button type="submit" onclick="log()">Login</button>
+            <button id="log" type="submit" onclick="log()">Login</button>
         </div>
 
         
