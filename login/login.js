@@ -10,7 +10,7 @@
     let correctPass="password"
     
     if(user == correctUser && pass==correctPass){
-        document.location='{{andreslgg.github.io/TiendaTEMA3}}{{/store.html}}'
+        document.location="{{ andreslgg.github.io/TiendaTEMA3 }}{{ /index.html }}"
     }else{
         incorrect.removeAttribute('hidden')
         userField.focus()
