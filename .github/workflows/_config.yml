@@ -1,0 +1,12 @@
+baseurl: /TiendaTEMA3
+url: https://andreslgg.github.io
+lsi: false
+safe: true
+source: /TiendaTEMA3
+incremental: false
+highlighter: rouge
+gist:
+  noscript: false
+kramdown:
+  math_engine: mathjax
+  syntax_highlighter: rouge
