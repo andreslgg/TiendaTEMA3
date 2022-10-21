@@ -1,5 +1,5 @@
 body {
-  font-family: "SF Pro Text","SF Pro Icons","Helvetica Neue","Helvetica","Arial",sans-serif;
+    font-family: "SF Pro Text", "SF Pro Icons", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
     background-color: #f9f9f9;
     min-height: 100vh;
     margin: 0;
@@ -23,18 +23,20 @@ input[type=text] {
     color: rgb(0, 0, 0);
     font-size: 14px;
     width: 150px;
-    border: black solid 1px;    
+    border: black solid 1px;
 
 
 }
 
-input[type=text]:hover {
-    }
+a:hover,
+a.active {
+    opacity: 0.6;
+}
 
 
 .flex {
     display: flex;
-    gap: var(--gap, 3rem);
+    gap: 3rem;
 }
 
 /* Navegacion */
@@ -47,7 +49,8 @@ input[type=text]:hover {
     margin: 0;
     align-items: center;
     justify-content: space-between;
-    background: rgba(255, 255, 255, 0.95);}
+    background: rgba(255, 255, 255, 0.95);
+}
 
 /* Si el navegador lo soporta */
 
@@ -64,12 +67,13 @@ a:active {
     display: none;
 }
 
-.icon{
+.icon {
     width: 80%;
     height: 80%;
     background-repeat: no-repeat;
     background-position: center;
 }
+
 .cart {
     background-image: url("./cart.svg");
 }
@@ -81,7 +85,8 @@ a:active {
     display: flex;
     margin: auto;
 }
-.div-ver-producto{
+
+.div-ver-producto {
     justify-content: center;
     width: 80%;
     display: flex;
@@ -92,27 +97,28 @@ a:active {
 
 .productos {
     justify-items: center;
-    gap:calc(10vw - 120px);    
+    gap: calc(10vw - 120px);
     display: grid;
     grid-template-columns: repeat(3, 1fr);
 }
 
-.hide{display:none;}
-/* importante para esconder los productos */
+.hide {
+    display: none;
+}
 
 /* producto */
 .card {
     border-radius: 8px;
+    border: var(--border-blck);
     height: 100%;
     align-items: center;
-    border: var(--border-blck);
     max-width: 450px;
 
 }
 
 .card:hover {
     box-shadow: 5px 5px 5px 5px rgba(0, 0, 0, 0.3);
-}   
+}
 
 .card-body {
     height: 100%;
@@ -120,10 +126,11 @@ a:active {
     flex-direction: column;
     justify-content: space-between;
 }
- 
-.div-img-card-u{
+
+.div-img-card-u {
     overflow: hidden;
 }
+
 .img-card {
     width: 450px;
     height: 600px;
@@ -132,7 +139,7 @@ a:active {
 
 }
 
-.img-card:hover{
+.img-card:hover {
     cursor: pointer;
     transform: scale(1.05);
     transition-duration: 1s;
@@ -140,6 +147,7 @@ a:active {
 
 
 .img-card-u {
+    margin: auto;
     width: 450px;
     height: 600px;
     display: inline-block;
@@ -171,25 +179,23 @@ a:active {
 
 .card-u {
     width: 100%;
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    display: flex;
     border: var(--border-blck);
 }
 
 .descrip {
-    text-align: center;
+    text-align: justify;
     color: #292929;
     font-size: 16px;
     margin-top: auto;
     margin-bottom: auto;
+    margin: 3%;
 }
 
 .card-body-u {
-    padding: auto;
-    margin: auto;
-    width: auto;
-    justify-content: center;
-    align-items: center;
+    width: 100%;
+    height: 100%;
+  
     margin: auto;
 }
 
@@ -346,6 +352,12 @@ table th {
     transition-duration: 0.4s;
 }
 
+.btn-agregar:hover {
+    background-color: #004aaa;
+
+}
+
+
 .btn-restar {
     background-image: url(./restar.svg);
     background-repeat: no-repeat;
@@ -358,6 +370,11 @@ table th {
     border: 2px solid #000000;
     border-radius: 4px;
     transition-duration: 0.4s;
+}
+
+.btn-restar:hover {
+    background-color: #ffed4f;
+
 }
 
 .btn-pagar {
@@ -403,12 +420,12 @@ table th {
 }
 
 .btn-add:hover {
-    background-color: #dfdfdf;
+    background-color: #f7f7f7;
 
 }
 
 .btn-add:active {
-    background-color: #666e6c;
+    background-color: #7e7e7e;
     box-shadow: var(--box-sh2);
     transform: translateY(4px);
 }
@@ -419,6 +436,8 @@ table th {
     background-color: #fefefe;
     background-repeat: no-repeat;
     background-position: center;
+    margin-top: 5%;
+    margin-left: 45%;
     width: 60px;
     height: 60px;
     border-radius: 50%;
@@ -460,10 +479,12 @@ table th {
 
     /* 928-1440px */
     .productos {
-        gap:calc(10vw - 80px);
+        gap: calc(10vw - 80px);
         display: grid;
         grid-template-columns: repeat(2, 1fr);
-    } 
+    }
+
+
 
     .primary-navigation {
         height: var(--nav-height);
@@ -490,8 +511,12 @@ table th {
         backdrop-filter: blur(1rem);
         padding: min(30vh, 10rem) 2em;
         transform: translateX(100%);
-        justify-content:start;
+        justify-content: start;
 
+    }
+
+    .card-u {
+        display: grid;
     }
 
     .mobile-cart {
@@ -515,7 +540,7 @@ table th {
     .productos {
         display: grid;
         grid-template-columns: repeat(1, 1fr);
-        gap:calc(10vw - 20px);    
+        gap: calc(10vw - 20px);
     }
 
     .mobile-nav-toggle {
@@ -553,32 +578,41 @@ table th {
 
     .menus {
         flex-direction: column;
-        
+
     }
 
-   
+
 
     #myUL {
         /* Remove default list styling */
         list-style-type: none;
         padding: 0;
         margin: 0;
-      }
-      
-      #myUL li a {
-        border: 1px solid #ddd; /* Add a border to all links */
-        margin-top: -1px; /* Prevent double borders */
-        background-color: #f6f6f6; /* Grey background color */
-        padding: 12px; /* Add some padding */
-        text-decoration: none; /* Remove default text underline */
-        font-size: 18px; /* Increase the font-size */
-        color: black; /* Add a black text color */
-        display: block; /* Make it into a block element to fill the whole list */
-      }
-      
-      #myUL li a:hover:not(.header) {
-        background-color: #eee; /* Add a hover effect to all links, except for headers */
-      }
+    }
+
+    #myUL li a {
+        border: 1px solid #ddd;
+        /* Add a border to all links */
+        margin-top: -1px;
+        /* Prevent double borders */
+        background-color: #f6f6f6;
+        /* Grey background color */
+        padding: 12px;
+        /* Add some padding */
+        text-decoration: none;
+        /* Remove default text underline */
+        font-size: 18px;
+        /* Increase the font-size */
+        color: black;
+        /* Add a black text color */
+        display: block;
+        /* Make it into a block element to fill the whole list */
+    }
+
+    #myUL li a:hover:not(.header) {
+        background-color: #eee;
+        /* Add a hover effect to all links, except for headers */
+    }
 
     .mobile-nav-toggle[aria-expanded="true"] {
         background-image: url("close.svg");
@@ -632,4 +666,3 @@ table th {
 }
 
 /* zoom del producto */
-

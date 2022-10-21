@@ -243,9 +243,11 @@ document.addEventListener('DOMContentLoaded', () => {
             nodoPrecio.textContent = `$${miItem[0].precio}`
             const nodoNombre = document.createElement('td');
             nodoNombre.setAttribute('data-label', 'nombre');
+
             nodoNombre.textContent = `${miItem[0].nombre}`;
             const nodoBotones = document.createElement('td');
             nodoBotones.setAttribute('data-label', 'accion');
+            nodoBotones.setAttribute('gap','var(--gap, 3rem);')
 
 
             nodoBotones.appendChild(nodoBotonA);
