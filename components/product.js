@@ -1,70 +1,12 @@
 document.addEventListener('DOMContentLoaded', () => {
     // Variables
-    const productos = [
-        {
-            id: 1,
-            nombre: 'Laptop de trabajo',
-            precio: 8000,
-            imagen: './assets/laptop.png'
-        },
-        {
-            id: 2,
-            nombre: 'Computadora de gama alta',
-            precio: 32000,
-            imagen: './assets/pc.png'
-        },
-        {
-            id: 3,
-            nombre: 'Memorias RAM 8GB',
-            precio: 1200,
-            imagen: './assets/ram8gb.png'
-        },
-        {
-            id: 4,
-            nombre: 'Disco de estado solido 1TB',
-            precio: 1400,
-            imagen: './assets/disco1tb.png'
-        },
-        {
-            id: 5,
-            nombre: 'Computadora de gama media',
-            precio: 24000,
-            imagen: './assets/pcmid.png'
-        },
-        {
-            id: 6,
-            nombre: 'Memorias RAM 4GB',
-            precio: 400,
-            imagen: './assets/ram4gb.png'
-        },
-        {
-            id: 7,
-            nombre: 'Disco de estado solido 500GB',
-            precio: 800,
-            imagen: './assets/disco500gb.png'
-        },
-        {
-            id: 8,
-            nombre: 'Computadora de gama baja',
-            precio: 800,
-            imagen: './assets/pclow.png'
-        },
-        {
-            id: 9,
-            nombre: 'Laptop de gama alta',
-            precio: 35000,
-            imagen: './assets/laptophigh.png'
-        },
-        {
-            id: 10,
-            nombre: 'Tarjeta grafica Nvidia 4090',
-            precio: 30000,
-            imagen: './assets/4090.png'
-        },
+    const items = document.querySelector("#items");
+    const item = document.querySelector("#item");
 
-    ];
 
-    let carrito = [];
+    carrito = (localStorage.getItem('carrito') == null) ? [] : JSON.parse(localStorage.carrito)
+
+    console.log(carrito)
     const divisa = '$';
     const DOMitems = document.querySelector('#items');
     const DOMcarrito = document.querySelector('#carrito');
@@ -84,9 +26,16 @@ document.addEventListener('DOMContentLoaded', () => {
             nodoTitle.classList.add('card-title');
             nodoTitle.textContent = info.nombre;
             // Imagen
+            const nodoDivImagen = document.createElement('div');
+            nodoDivImagen.classList.add('div-img-card-u');
+            
             const nodoImagen = document.createElement('img');
+            nodoImagen.setAttribute('route', `/productos`)
             nodoImagen.classList.add('img-card');
+            nodoImagen.setAttribute('marcador', info.id);
             nodoImagen.setAttribute('src', info.imagen);
+            nodoImagen.addEventListener('click', abrirProducto);
+
             // Precio
             const nodoPrecio = document.createElement('p');
             nodoPrecio.classList.add('card-text');
@@ -97,7 +46,8 @@ document.addEventListener('DOMContentLoaded', () => {
             nodoBoton.setAttribute('marcador', info.id);
             nodoBoton.addEventListener('click', añadirProductoAlCarrito);
             // Insertamos
-            nodoCardBody.appendChild(nodoImagen);
+            nodoDivImagen.appendChild(nodoImagen)
+            nodoCardBody.appendChild(nodoDivImagen);
             nodoCardBody.appendChild(nodoTitle);
             nodoCardBody.appendChild(nodoPrecio);
             nodoCardBody.appendChild(nodoBoton);
@@ -107,16 +57,86 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     //Evento para añadir un producto al carrito de la compra
-    
+
     function añadirProductoAlCarrito(evento) {
         carrito.push(evento.target.getAttribute('marcador'))
         // Actualizamos el carrito 
+
         renderizarCarrito();
 
     }
 
+    function abrirProducto(evento) {
+        items.hidden = true;
+        item.hidden = false;
+
+        localStorage.setItem('producto', evento.target.getAttribute('marcador'))
+
+        let i = localStorage.getItem('producto');
+        i--;
+        if (i == null) {
+        } else {
+            const divisa = '$';
+            const DOMitem = document.querySelector('#item')
+            console.log(DOMitem)
+            DOMitem.innerHTML = ''
+
+
+            // Estructura
+            const nodo = document.createElement('div');
+            nodo.classList.add('card-u');
+            // Body
+            const nodoCardBody = document.createElement('div');
+            nodoCardBody.classList.add('card-body-u');
+            // Titulo
+            const nodoTitle = document.createElement('h4');
+            nodoTitle.classList.add('card-title');
+            nodoTitle.textContent = productos[i].nombre;
+            // Imagen
+
+            const nodoImagen = document.createElement('img');
+            nodoImagen.classList.add('img-card-u');
+            nodoImagen.setAttribute('src', productos[i].imagen);
+            // Precio
+            const nodoPrecio = document.createElement('p');
+            nodoPrecio.classList.add('card-text');
+            nodoPrecio.textContent = `${divisa}${productos[i].precio}`;
+            // Boton 
+            const nodoDescrip = document.createElement('p');
+            nodoDescrip.classList.add('descrip');
+            nodoDescrip.textContent = `${productos[i].descripcion}`
+
+            const nodoBoton = document.createElement('button');
+            nodoBoton.classList.add('btn-add');
+            nodoBoton.setAttribute('marcador', productos[i].id);
+
+            const nodoRegresar = document.createElement('button')
+            nodoRegresar.classList.add('btn-back');
+            nodoRegresar.addEventListener('click', regresarIndex);
+
+
+            // Insertamos
+            nodo.appendChild(nodoImagen);
+            nodoCardBody.appendChild(nodoTitle);
+            nodoCardBody.appendChild(nodoDescrip);
+            nodoCardBody.appendChild(nodoPrecio);
+            nodoCardBody.appendChild(nodoBoton);
+            nodo.appendChild(nodoCardBody);
+            DOMitem.appendChild(nodo);
+            DOMitem.appendChild(nodoRegresar)
+
+            //bug
+            const navToggle = document.querySelector(".mobile-nav-toggle");
+            navToggle.setAttribute("aria-expanded", false)
+        }
+        function regresarIndex() {
+            items.hidden = false;
+            item.hidden = true;
+        }
+    }
+
     //Dibuja todos los productos guardados en el carrito
-    
+
     function renderizarCarrito() {
         // Vaciamos todo el html
         DOMcarrito.textContent = '';
@@ -242,6 +262,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
         // Renderizamos el precio total en el HTML
         DOMtotal.textContent = calcularTotal();
+        localStorage.setItem('carrito', JSON.stringify(carrito))
     }
 
     //Funcion +1
@@ -256,15 +277,15 @@ document.addEventListener('DOMContentLoaded', () => {
     function restarItemCarrito(evento) {
         const id = evento.target.getAttribute('marcador')
         const index = carrito.indexOf(id);
-        if (index > -1) { 
-            carrito.splice(index, 1); 
+        if (index > -1) {
+            carrito.splice(index, 1);
         }
 
         renderizarCarrito();
     }
-    
+
     // Evento para borrar un elemento del carrito
-    
+
     function borrarItemCarrito(evento) {
         // Obtenemos el producto ID que hay en el boton pulsado
         const id = evento.target.dataset.item;
@@ -277,7 +298,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     //Calcula el precio total teniendo en cuenta los productos repetidos
-     
+
     function calcularTotal() {
         // Recorremos el array del carrito 
         return carrito.reduce((total, item) => {
@@ -291,8 +312,8 @@ document.addEventListener('DOMContentLoaded', () => {
         }, 0).toFixed(2);
     }
 
-     //Vacia el carrito y vuelve a dibujarlo
-    
+    //Vacia el carrito y vuelve a dibujarlo
+
     function vaciarCarrito() {
         // Limpiamos los productos guardados
         carrito = [];
@@ -306,4 +327,6 @@ document.addEventListener('DOMContentLoaded', () => {
     // Inicio
     renderizarProductos();
     renderizarCarrito();
+
+
 });
