@@ -3,7 +3,6 @@ body {
     background-color: #f9f9f9;
     margin: 0;
     padding-top: 82px;
-    min-height: 100vh; 
     padding-bottom: 0rem; 
     --nav-height: 40px;
     --border-blck: 2px solid rgb(3, 3, 3);
@@ -95,7 +94,7 @@ a:active {
     align-items: center;
     display: flex;
     margin: auto;
-        min-height: 90vh; 
+    min-height: 78vh; 
 
 }
 
@@ -104,8 +103,7 @@ a:active {
     width: 80%;
     display: flex;
     margin: auto;
-    min-height: 90vh; 
-
+    min-height: 79vh; 
 }
 
 /* main */
