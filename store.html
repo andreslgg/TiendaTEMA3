@@ -11,16 +11,18 @@
     <link rel="stylesheet" href="./assets/styles.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="icon" type="image/x-icon" href="./assets/iconF.png">
+    <script src="./components/loading.js"></script>
     <script src="./components/nav.js" defer></script>
     <script src="./components/product.js"></script>
     <script src="./components/cart.js"></script>
     <script src="./components/productList.js"></script>
     <script src="./components/searchBar.js"></script>
+    <script src="./components/catalogue.js"></script>
     <script src="https://cdn.lordicon.com/qjzruarw.js"></script>
 </head>
+<!-- <div id="animacion-carga"><img id="carga" src="./assets/Loading_icon.gif" alt=""></div> -->
 
-<body>
-
+<div id="body">
     <!-- Botones de navegacion en celular -->
     <button class="mobile-nav-toggle" aria-expanded="false" aria-controlls="primary-navigation"
         aria-hidden="true"></button>
@@ -28,28 +30,39 @@
 
     <!-- Navegacion en escritorio-->
     <nav class="nav">
-        <ul id="primary-navigation" data-visible="false" class="primary-navigation flex">
+        <ul id="primary-navigation" data-visible="false" class="primary-navigation flex snip">
             <li>
                 <span><img src="./assets/iconS.png" class="icon"></span>
             </li>
             <li id="active">
                 <form action="">
-                    <input type="text" search="true" name="search" id="srch" placeholder="Buscar..." onkeyup="buscarProducto()" onkeydown="return (event.keyCode!=13);" data>
+                    <input type="text" name="search" placeholder="Buscar..." onkeyup="buscarProducto();"
+                        onkeydown="return (event.keyCode!=13);" data>
                 </form>
             </li>
             <div class="menus flex">
                 <li id="active">
-                    <a href="#">Inicio</a>
+                    <a href="#" onclick="window.reload" data-hover="INICIO">INICIO</a>
                 </li>
                 <li id="active">
-                    <a href="#">Contacto</a>
+                    <a href="#" data-hover="CONTACTO">CONTACTO</a>
                 </li>
                 <li id="active">
-                    <a href="#">Catalogo</a>
+                    <div class="dropdown">
+                        <a data-hover="CATALOGO">CATALOGO</a>
+                        <div class="dropdown-content">
+                            <a href="#" onclick="catalogo(1);event.preventDefault();">Computadoras</a>
+                            <a onclick="catalogo(2);event.preventDefault();">Laptops</a>
+                            <a onclick="catalogo(3);event.preventDefault();">Componentes</a>
+                            <a onclick="catalogo(4);event.preventDefault();">Perifericos</a>
+                        </div>
+                    </div>
+
                 </li>
                 <li id="active">
                     <a href="#" onclick="verCarrito()">
-                        <lord-icon src="https://cdn.lordicon.com/udbbfuld.json" trigger="hover" colors="primary:#242424" style="width:60px;height:60px;margin-top:-80px;padding-top: 40px;"></lord-icon>
+                        <lord-icon src="https://cdn.lordicon.com/udbbfuld.json" trigger="hover" colors="primary:#242424"
+                            style="width:60px;height:60px;margin-top:-100px;padding-top: 20px;"></lord-icon>
                     </a>
                 </li>
             </div>
@@ -62,7 +75,7 @@
     </div>
     <div class="div-ver-producto" id="div-ver-producto" hide>
         <main id="ver-producto" class="ver-producto"></main>
-        
+
         <!-- Carrito -->
     </div>
     <!-- Dialogo carrito -->
@@ -84,6 +97,22 @@
             </aside>
         </div>
     </div>
-</body>
+</div>
 
+<footer class="footer">
+    <div id="cont">
+        <div class="align-items-center">
+            <div class="logo">
+                <img src="./assets/iconS.png" class="icon">
+            </div>
+            <div class="derechos">
+                <div class="social-icon">
+                    <a href="https://www.facebook.com/inst"><img src="./assets/fb.svg" alt="Icon" /></a>
+                    <a href="https://www.instagram.com/"><img src="./assets/ig.svg" alt="Icon" /></a>
+                </div>
+                <p>Copyright 2022. All Rights Reserved</p>
+            </div>
+        </div>
+    </div>
+</footer>
 </html>

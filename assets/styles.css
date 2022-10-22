@@ -1,16 +1,31 @@
 body {
     font-family: "SF Pro Text", "SF Pro Icons", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
     background-color: #f9f9f9;
-    min-height: 100vh;
     margin: 0;
     padding-top: 82px;
+    min-height: 100vh; 
+    padding-bottom: 0rem; 
     --nav-height: 40px;
     --border-blck: 2px solid rgb(3, 3, 3);
     --box-sh1: 0 9px #999;
     --box-sh2: 0 5px #666;
 }
+#animacion-carga{
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background-color: white;
+}
 
-input[type=text] {
+#carga{
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  margin-top: -100px; /* Negative half of height. */
+  margin-left: -250px; 
+}
+
+.nav input[type=text] {
     background-image: url('buscar.svg');
     background-position: 0px 0px;
     background-repeat: no-repeat;
@@ -28,10 +43,6 @@ input[type=text] {
 
 }
 
-a:hover,
-a.active {
-    opacity: 0.6;
-}
 
 
 .flex {
@@ -68,8 +79,8 @@ a:active {
 }
 
 .icon {
-    width: 80%;
-    height: 80%;
+    width: 90px;
+    height: 70px;
     background-repeat: no-repeat;
     background-position: center;
 }
@@ -84,6 +95,8 @@ a:active {
     align-items: center;
     display: flex;
     margin: auto;
+        min-height: 90vh; 
+
 }
 
 .div-ver-producto {
@@ -91,6 +104,8 @@ a:active {
     width: 80%;
     display: flex;
     margin: auto;
+    min-height: 90vh; 
+
 }
 
 /* main */
@@ -132,6 +147,7 @@ a:active {
 }
 
 .img-card {
+    border-radius: 8px;
     width: 450px;
     height: 600px;
     display: inline-block;
@@ -421,11 +437,10 @@ table th {
 
 .btn-add:hover {
     background-color: #f7f7f7;
-
 }
 
 .btn-add:active {
-    background-color: #7e7e7e;
+    background-color: #c2c2c2;
     box-shadow: var(--box-sh2);
     transform: translateY(4px);
 }
@@ -665,4 +680,129 @@ table th {
     cursor: pointer;
 }
 
-/* zoom del producto */
+
+@import url(https://fonts.googleapis.com/css?family=Roboto:400,500,800);
+.snip {
+  font-family: 'Roboto', Arial, sans-serif;
+  text-align: center;
+  text-transform: uppercase;
+  font-weight: 200;
+  color:#292929
+}
+.snip * {
+  box-sizing: border-box;
+}
+.snip li {
+  display: inline-block;
+  list-style: outside none none;
+  margin: 0 0.5em;
+  padding: 10;
+}
+.snip a {
+  padding: 0.5em 0;
+  position: relative;
+  letter-spacing: 1px;
+  text-decoration: none;
+}
+.snip a[data-hover]:before,
+.snip a[data-hover]:after {
+  position: absolute;
+  -webkit-transition: all 0.35s ease;
+  transition: all 0.35s ease;
+}
+.snip a[data-hover]:before {
+  bottom: 0;
+  display: block;
+  height: 3px;
+  width: 0%;
+  content: "";
+  background-color: #111111;
+}
+.snip a[data-hover]:after {
+  left: 0;
+  top: 0;
+  padding: 0.5em 0;
+  position: absolute;
+  content: attr(data-hover);
+  color: #111111;
+  white-space: nowrap;
+  max-width: 0%;
+  overflow: hidden;
+}
+.snip a[data-hover]:hover:before,
+.snip .current a:before {
+  opacity: 1;
+  width: 100%;
+}
+.snip a[data-hover]:hover:after,
+.snip .current a:after {
+  max-width: 100%;
+}
+
+.dropdown-content {
+  display: none;
+  margin-top: 10px;
+  text-align: justify;
+  border-radius: 8px;
+  color: black;
+  background-color: #f9f9f9;
+  position: absolute;
+  width: 200px;
+  overflow: auto;
+  box-shadow: 0px 10px 10px 0px rgba(0,0,0,0.4);
+}
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+.dropdown-content a {
+  display: block;
+  color: #000000;
+  padding: 10px;
+  text-decoration: none;
+}
+.dropdown-content a:hover {
+  color: #FFFFFF;
+  background-color: #111111;
+}
+/* footer */
+
+.footer {
+    bottom: 0;
+    width: 100%;
+    background: #121212;  /* fallback for old browsers */
+    color: #f9f9f9;
+  }
+
+  .footer p {
+    font-weight: 400;
+    font-size: 14px;
+    color: #B8B8B8;
+    letter-spacing: 0.5px;
+    margin-top: 20px;
+  }
+.social-icon img{
+    width: 50px;
+    height: 50px;
+}
+
+.logo img{
+    margin:10px;
+    width: 100px;
+    height: 80px;
+}
+
+  .align-items-center {
+    padding: 10px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .derechos{
+    display: flex;  
+    gap: 10px 20px; 
+    justify-content: space-between;
+    font-size: small;
+    text-align: end;
+  }
