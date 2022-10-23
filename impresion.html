@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./impresion/styles.css">
+    <script src="./components/impresion.js"></script>
+    <script src="./components/productList.js"></script>
+    <title>Document</title>
+</head>
+
+<body>
+    <header>
+        <img src="./assets/logo.png" alt="">
+        <div>
+            <h1>TECHNOLAND SA DE CV</h1>
+            <p>Av. Ignacio Morones Prieto 1101, Nuevo Repueblo, 64700 Monterrey, N.L.</p>
+            <h2>Recibo de pago</h2>
+        </div>
+    </header>
+    <main>
+        <div>
+            <h2>Datos:</h2>
+            <label for="">Nombre: </label>
+            <input type="text" name="" id="" disabled>
+            <label for="">Dirección: </label>
+            <input type="text" name="" id="" disabled><br>
+            <label for="">Numero de pedido: </label>
+            <input type="text" name="" id="" disabled>
+
+        </div>
+        <div>
+            <h2>RESUMEN DE ARTICULOS:</h2>
+            <table id="articulos">
+                <tr>
+                    <td>Articulo</td>
+                    <td>Precio</td>
+                    <td>Unidades</td>
+                    <td>Total</td>
+                </tr>
+                
+             
+            </table>
+        </div>
+        <h2 id="subtotal"></h2>
+        <h2 id="iva"></h2>
+        <h1 id="total"></h1>
+    </main>
+    <footer>
+        <img src="./assets/QRCode.png" alt="" width="100px" height="100px">
+        <pre>Este documento no es una representación impresa del CFDI</pre>
+    </footer>
+</body>
+
+</html>

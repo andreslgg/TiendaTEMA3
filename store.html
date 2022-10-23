@@ -20,7 +20,8 @@
     <script src="./components/catalogue.js"></script>
     <script src="https://cdn.lordicon.com/qjzruarw.js"></script>
 </head>
-<!-- <div id="animacion-carga"><img id="carga" src="./assets/Loading_icon.gif" alt=""></div> -->
+<!-- Animacion de carga 2 segundos -->
+<div id="animacion-carga"><img id="carga" src="./assets/Loading_icon.gif" alt=""></div>
 
 <div id="body">
     <!-- Botones de navegacion en celular -->
@@ -42,19 +43,25 @@
             </li>
             <div class="menus flex">
                 <li id="active">
-                    <a href="#" onclick="window.reload" data-hover="INICIO">INICIO</a>
+                    <a href="#" onclick="location.reload();" data-hover="INICIO">INICIO</a>
                 </li>
                 <li id="active">
-                    <a href="#" data-hover="CONTACTO">CONTACTO</a>
+                    <div class="dropdown">
+
+                        <a href="#" data-hover="CONTACTO">CONTACTO</a>
+                        <div class="dropdown-content-i">
+                            <a href="https://www.whatsapp.com/" ><span><img src="./assets/ws.svg" alt=""></span></a>
+                        </div>
+                    </div>
                 </li>
                 <li id="active">
                     <div class="dropdown">
                         <a data-hover="CATALOGO">CATALOGO</a>
                         <div class="dropdown-content">
                             <a href="#" onclick="catalogo(1);event.preventDefault();">Computadoras</a>
-                            <a onclick="catalogo(2);event.preventDefault();">Laptops</a>
-                            <a onclick="catalogo(3);event.preventDefault();">Componentes</a>
-                            <a onclick="catalogo(4);event.preventDefault();">Perifericos</a>
+                            <a href="#" onclick="catalogo(2);event.preventDefault();">Laptops</a>
+                            <a href="#" onclick="catalogo(3);event.preventDefault();">Componentes</a>
+                            <a href="#" onclick="catalogo(4);event.preventDefault();">Perifericos</a>
                         </div>
                     </div>
 
@@ -91,14 +98,14 @@
                 <p class="text-right">Total: $<span id="total"></span></p>
                 <div class="row">
                     <button id="boton-vaciar" class="btn">Vaciar</button>
-                    <button class="btn-pagar">Pagar</button>
+                    <button class="btn-pagar" onclick="document.location='./impresion.html';">Pagar</button>
 
                 </div>
             </aside>
         </div>
     </div>
 </div>
-
+<!-- footer -->
 <footer class="footer">
     <div id="cont">
         <div class="align-items-center">
@@ -107,7 +114,7 @@
             </div>
             <div class="derechos">
                 <div class="social-icon">
-                    <a href="https://www.facebook.com/inst"><img src="./assets/fb.svg" alt="Icon" /></a>
+                    <a href="https://www.facebook.com/"><img src="./assets/fb.svg" alt="Icon" /></a>
                     <a href="https://www.instagram.com/"><img src="./assets/ig.svg" alt="Icon" /></a>
                 </div>
                 <p>Copyright 2022. All Rights Reserved</p>
